@@ -1,0 +1,29 @@
+using UnityEditor.ShaderGraph.Internal;
+using UnityEngine;
+
+public class Obstacle : MonoBehaviour
+{
+    public float minSize = 1f;
+    public float maxSize = 2f;
+    public Rigidbody2D Rb;
+    public float minspeed = 50f;
+    public float maxspeed = 150f;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Rb = GetComponent<Rigidbody2D>();
+        float randomsize = Random.Range(minSize, maxSize);
+        transform.localScale = new Vector3(randomsize, randomsize, 1);
+        float randomspeed = Random.Range(minspeed, maxspeed);
+        Vector2 randomDirection = Random.insideUnitCircle;
+        Rb.AddForce(randomDirection * randomspeed);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}
